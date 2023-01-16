@@ -3,10 +3,11 @@ package Enumless;
 import oop.drivers.DriverB;
 import oop.drivers.DriverC;
 import oop.drivers.DriverD;
-import oop.transport.Bus;
-import oop.transport.Car;
-import oop.transport.Transport;
-import oop.transport.Truck;
+import oop.transport.*;
+
+import static Enumless.transports.Bus.Capacity;
+import static Enumless.transports.Car.BodyType;
+import static Enumless.transports.Truck.CarryingCapacity;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,11 +30,13 @@ public class Main {
 
 
         DriverB driverB= new DriverB("Vagov Vag Vagovich",true,1);
-        Car car1 = new Car("bmw","z8",3.2,driverB);
+        Car car1 = new Car("bmw","z8",3.2,driverB, BodyType.HATCHBACK);
 
+        DriverD driverD= new DriverD("name",true,1);
+        Bus bus1 = new Bus("brand","model",3.1, driverD,Capacity.EXTRA_SMALL);
 
-
-
+        DriverC driverC= new DriverC("name",true,1);
+        Truck truck = new Truck("Truck","model Truck",4.1, driverC,CarryingCapacity.N1);
 
 
 

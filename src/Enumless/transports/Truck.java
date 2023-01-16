@@ -4,8 +4,9 @@ import oop.drivers.DriverC;
 
 public class Truck extends Transport<DriverC> {
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
+    public Truck(String brand, String model, double engineVolume, DriverC driver,CarryingCapacity carrying) {
         super(brand, model, engineVolume, driver);
+        this.carrying=carrying;
     }
 
     public enum CarryingCapacity {

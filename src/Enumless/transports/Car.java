@@ -5,9 +5,9 @@ import oop.drivers.DriverB;
 public class Car extends Transport<DriverB> {
 
 
-    public Car(String brand, String model, double engineVolume, DriverB driver) {
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType ) {
         super(brand, model, engineVolume, driver);
-
+        this.bodyType=bodyType;
     }
 
     public enum BodyType {
