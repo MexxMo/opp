@@ -1,4 +1,4 @@
-package drivers;
+package oop.drivers;
 
 public class DriverB extends Driver {
     public DriverB(String name, boolean license, int driverExperience) {

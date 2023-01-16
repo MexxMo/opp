@@ -1,6 +1,6 @@
-package transport;
+package oop.transport;
 
-import drivers.Driver;
+import oop.drivers.Driver;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private String brand;
