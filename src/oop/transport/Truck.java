@@ -1,6 +1,6 @@
-package transport;
+package oop.transport;
 
-import drivers.DriverC;
+import oop.drivers.DriverC;
 
 public class Truck extends Transport<DriverC> {
 
