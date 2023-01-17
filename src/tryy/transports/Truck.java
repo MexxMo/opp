@@ -1,5 +1,6 @@
 package tryy.transports;
 
+import tryy.CantLicenseException;
 import tryy.drivers.DriverC;
 
 public class Truck extends Transport<DriverC> {
@@ -47,7 +48,12 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public void passDiagnostics() {
-        System.out.println("Грузовик " + getBrand() + " " + getModel() + " прошел диагностику");
+        try {
+            if (!getDriver().isLicense()){
+                throw new CantLicenseException("У водителя грузовика нет прав");}
+        } catch (CantLicenseException e) {
+            throw new RuntimeException(e);
+        }System.out.printf("Проверка грузовика %s %s - успешна\n", getBrand(),getModel());
     }
 
     @Override

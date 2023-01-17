@@ -36,10 +36,11 @@ public class Main {
 
         Bus bus2 = new Bus("asd","das",1.2,driverD,Bus.Capacity.SMALL);
 
+     //   driverB.setLicense(false);
 
+        truck.passDiagnostics();
 
-
-
+        car1.passDiagnostics();
 
     }
 
