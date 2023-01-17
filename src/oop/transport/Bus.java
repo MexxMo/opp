@@ -5,7 +5,7 @@ import oop.drivers.DriverD;
 public class Bus extends Transport<DriverD> {
 
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver) {
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Enumless.transports.Bus.Capacity extraSmall) {
         super(brand, model, engineVolume, driver);
     }
 
@@ -40,5 +40,8 @@ public class Bus extends Transport<DriverD> {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость автобуса " + maxSpeed);
 
+    }
+
+    public void passDiagnostics() {
     }
 }
