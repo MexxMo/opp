@@ -6,7 +6,7 @@ import tryy.transports.*;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CantLicenseException {
 
 
 //        for (int i = 1; i <= 4; i++) {
@@ -36,17 +36,23 @@ public class Main {
 
         Bus bus2 = new Bus("asd","das",1.2,driverD,Bus.Capacity.SMALL);
 
-     //   driverB.setLicense(false);
-
         truck.passDiagnostics();
 
-        car1.passDiagnostics();
+        car1.getDriver().setLicense(false);
+        try {
+            car1.passDiagnostics();
+        } catch (CantLicenseException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 
     }
 
 
 
-}
+
 
 //    private static void printInfo(Transport<?> transport) {
 //        System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");

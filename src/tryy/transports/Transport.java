@@ -24,7 +24,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void printType();
     public abstract void stopMoving();
 
-    public abstract void passDiagnostics();
+    public abstract void passDiagnostics() throws CantLicenseException;
 
 
     public T getDriver() {

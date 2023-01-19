@@ -47,13 +47,13 @@ public class Truck extends Transport<DriverC> {
     }
 
     @Override
-    public void passDiagnostics() {
-        try {
+    public void passDiagnostics() throws CantLicenseException {
             if (!getDriver().isLicense()){
-                throw new CantLicenseException("У водителя грузовика нет прав");}
-        } catch (CantLicenseException e) {
-            throw new RuntimeException(e);
-        }System.out.printf("Проверка грузовика %s %s - успешна\n", getBrand(),getModel());
+                throw new CantLicenseException("У водителя грузовика нет прав");
+            } else {
+
+        System.out.printf("Проверка грузовика %s %s - успешна\n", getBrand(),getModel());
+    }
     }
 
     @Override
