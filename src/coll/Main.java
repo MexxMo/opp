@@ -5,6 +5,7 @@ import coll.drivers.DriverC;
 import coll.drivers.DriverD;
 import coll.transports.Bus;
 import coll.transports.Car;
+import coll.transports.Transport;
 import coll.transports.Truck;
 
 
@@ -46,7 +47,13 @@ public class Main {
             car1.passDiagnostics();
         } catch (CantLicenseException e) {
             System.out.println(e.getMessage());
+
         }
+
+        Mechanic<Transport<?>> mechanic = new Mechanic<>("var","com");
+
+        mechanic.carryOutMaintenance(car1);
+
     }
 
 
