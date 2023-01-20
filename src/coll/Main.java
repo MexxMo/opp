@@ -30,6 +30,13 @@ public class Main {
         Mechanic<Car> oleg = new Mechanic<>("Oleg","Oleg Int.");
         Mechanic<?> ultraMeh = new Mechanic<>("Boss Mex","Oleg Int.");
 
+        transports.add(car1);
+        transports.add(truck1);
+        mechanics.add(oleg);
+        mechanics.add(ultraMeh);
+
+
+
         car1.addMechanic(oleg);
         car1.addMechanic(ultraMeh);
 
