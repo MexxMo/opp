@@ -1,6 +1,7 @@
-package Enumless.transports;
+package tryy.transports;
 
-import Enumless.drivers.Driver;
+import tryy.CantLicenseException;
+import tryy.drivers.Driver;
 
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -22,6 +23,8 @@ public abstract class Transport<T extends Driver> implements Competing {
     public abstract void startMoving();
     public abstract void printType();
     public abstract void stopMoving();
+
+    public abstract void passDiagnostics() throws CantLicenseException;
 
 
     public T getDriver() {

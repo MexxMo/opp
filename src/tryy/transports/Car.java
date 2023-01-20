@@ -1,30 +1,32 @@
-package Enumless.transports;
+package tryy.transports;
 
-import Enumless.drivers.DriverB;
+import tryy.CantLicenseException;
+import tryy.drivers.DriverB;
 
 public class Car extends Transport<DriverB> {
 
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType ) {
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
-        this.bodyType=bodyType;
+        this.bodyType = bodyType;
     }
+
 
     public enum BodyType {
         SEDAN("Седан"),
-       HATCHBACK("Хетчбэк"),
-       COUPE("Купе"),
-       CUV("Универсал"),
-       SUV("Внедорожник"),
-       CROSSOVER("Кроссовер"),
-       PICKUP("Пикап"),
-       VAN("Фургон"),
-       MINIVAN("Минивэн");
-       private final String translate;
+        HATCHBACK("Хетчбэк"),
+        COUPE("Купе"),
+        CUV("Универсал"),
+        SUV("Внедорожник"),
+        CROSSOVER("Кроссовер"),
+        PICKUP("Пикап"),
+        VAN("Фургон"),
+        MINIVAN("Минивэн");
+        private final String translate;
 
-       BodyType(String translate) {
-           this.translate = translate;
-       }
+        BodyType(String translate) {
+            this.translate = translate;
+        }
 
         public String getTranslate() {
             return translate;
@@ -35,6 +37,7 @@ public class Car extends Transport<DriverB> {
             return translate;
         }
     }
+
     private BodyType bodyType;
 
     @Override
@@ -48,10 +51,21 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
+    public void passDiagnostics() throws CantLicenseException{
+        if (!getDriver().isLicense()) {
+                throw new CantLicenseException("У водителя авто нет прав");
+            } else {
+        System.out.printf("Проверка авто %s %s - успешна\n", getBrand(),getModel());
+    }
+    }
+
+    @Override
     public void printType() {
-        if (bodyType==null){
+        if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
-        }else {System.out.println("Кузов: " + bodyType);}
+        } else {
+            System.out.println("Кузов: " + bodyType);
+        }
 
     }
 

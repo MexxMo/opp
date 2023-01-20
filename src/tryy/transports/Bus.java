@@ -1,6 +1,6 @@
-package Enumless.transports;
+package tryy.transports;
 
-import Enumless.drivers.DriverD;
+import tryy.drivers.DriverD;
 
 public class Bus extends Transport<DriverD> {
     public enum Capacity {
@@ -44,6 +44,11 @@ public class Bus extends Transport<DriverD> {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("Диагностика невозможна!");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Автобус " + getBrand() + " остановился на пит-стопе");
     }
@@ -68,7 +73,7 @@ public class Bus extends Transport<DriverD> {
     public void printType() {
         if (capacity==null){
             System.out.println("Данных по транспортному средству недостаточно");
-        }else {System.out.println("Кузов: " + capacity);}
+        }else {System.out.println(capacity);}
 
     }
 

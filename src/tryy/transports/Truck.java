@@ -1,12 +1,13 @@
-package Enumless.transports;
+package tryy.transports;
 
-import Enumless.drivers.DriverC;
+import tryy.CantLicenseException;
+import tryy.drivers.DriverC;
 
 public class Truck extends Transport<DriverC> {
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver,CarryingCapacity carrying) {
+    public Truck(String brand, String model, double engineVolume, DriverC driver, CarryingCapacity carrying) {
         super(brand, model, engineVolume, driver);
-        this.carrying=carrying;
+        this.carrying = carrying;
     }
 
     public enum CarryingCapacity {
@@ -26,10 +27,11 @@ public class Truck extends Transport<DriverC> {
 
         @Override
         public String toString() {
-            return String.format("Грузоподъёмность: %s %s", (minValue != null ? "от " + minValue + " тонн" : ""),
+            return String.format("%s %s", (minValue != null ? "от " + minValue + " тонн" : ""),
                     maxValue != null ? "до " + maxValue + " тонн" : "");
         }
     }
+
     private CarryingCapacity carrying;
 
 
@@ -45,11 +47,22 @@ public class Truck extends Transport<DriverC> {
     }
 
     @Override
+    public void passDiagnostics() throws CantLicenseException {
+            if (!getDriver().isLicense()){
+                throw new CantLicenseException("У водителя грузовика нет прав");
+            } else {
+
+        System.out.printf("Проверка грузовика %s %s - успешна\n", getBrand(),getModel());
+    }
+    }
+
+    @Override
     public void printType() {
-        if (carrying==null){
+        if (carrying == null) {
             System.out.println("Данных по транспортному средству недостаточно");
-        }else {
-            System.out.println("Грузоподъемность " + carrying);}
+        } else {
+            System.out.println("Грузоподъемность " + carrying);
+        }
 
     }
 
