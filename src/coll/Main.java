@@ -1,70 +1,45 @@
 package coll;
 
-import coll.drivers.DriverB;
-import coll.drivers.DriverC;
-import coll.drivers.DriverD;
-import coll.transports.Bus;
-import coll.transports.Car;
-import coll.transports.Transport;
-import coll.transports.Truck;
+import coll.drivers.*;
+import coll.transports.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
+
+    public static List<Driver<?>> drivers = new ArrayList<>();
+    public static List<Transport<?>> transports = new ArrayList<>();
+    public static List<Mechanic<?>> mechanics = new ArrayList<>();
+
+
     public static void main(String[] args) {
 
 
-//        for (int i = 1; i <= 4; i++) {
-//            DriverB driverB = new DriverB("Name B " + i, true, 1 + i);
-//            Car car = new Car("Бренд авто " + i, "Модель авто " + i, 1.5, driverB);
-//
-//            DriverD driverD = new DriverD("Name D " + i, true, 4 + i);
-//            Bus bus = new Bus("Бренд автобуса " + i, "Модель автобуса " + i, 3.0, driverD);
-//
-//            DriverC driverC = new DriverC("Name C " + i, true, 8 + i);
-//            Truck truck = new Truck("Бренд грузовика " + i, "Модель грузовика " + i, 4.5, driverC);
-//
-//
-//            printInfo(car);
-//            printInfo(truck);
-//            printInfo(bus);
+        DriverB serega = new DriverB("Serega", true, 10);
+        DriverC otec = new DriverC("Otec", true, 25);
 
 
-        DriverB driverB= new DriverB("Vagov Vag Vagovich",true,1);
-        Car car1 = new Car("bmw","z8",3.2,driverB, Car.BodyType.HATCHBACK);
+        drivers.add(serega);
+        drivers.add(otec);
 
-        DriverD driverD= new DriverD("name",true,1);
-        Bus bus1 = new Bus("brand","model",3.1, driverD, Bus.Capacity.EXTRA_SMALL);
+        Car car1 = new Car("Brand car","model car",1.5,serega, Car.BodyType.COUPE);
+        Truck truck1= new Truck("brend truck","model truck",2.4,otec, Truck.CarryingCapacity.N3);
 
-        DriverC driverC= new DriverC("name",true,1);
-        Truck truck = new Truck("Truck","model Truck",4.1, driverC, Truck.CarryingCapacity.N1);
+        Mechanic<Car> oleg = new Mechanic<>("Oleg","Oleg Int.");
+        Mechanic<?> ultraMeh = new Mechanic<>("Boss Mex","Oleg Int.");
 
-        Bus bus2 = new Bus("asd","das",1.2,driverD, Bus.Capacity.SMALL);
+        car1.addMechanic(oleg);
+        car1.addMechanic(ultraMeh);
 
+        truck1.addMechanic(ultraMeh);
 
-
-        car1.getDriver().setLicense(false);
-        try {
-            car1.passDiagnostics();
-        } catch (CantLicenseException e) {
-            System.out.println(e.getMessage());
-
-        }
-
-        Mechanic<Transport<?>> mechanic = new Mechanic<>("var","com");
-
-        mechanic.carryOutMaintenance(car1);
+        car1.showInfo();
+        System.out.println();
+        truck1.showInfo();
 
     }
 
 
-
-    }
-
-
-
-
-
-//    private static void printInfo(Transport<?> transport) {
-//        System.out.println("Водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
-//    }
-//}
+}

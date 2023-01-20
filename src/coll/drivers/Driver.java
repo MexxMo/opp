@@ -1,10 +1,14 @@
 package coll.drivers;
 
-public abstract class Driver  {
+import coll.transports.Transport;
+
+public abstract class Driver<T extends Transport<?>>  {
 
     private String name;
     private boolean license;
     private int driverExperience;
+
+    private T trasport;
 
 
     public Driver(String name, boolean license, int driverExperience) {

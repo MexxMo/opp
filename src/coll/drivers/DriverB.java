@@ -1,6 +1,8 @@
 package coll.drivers;
 
-public class DriverB extends Driver {
+import coll.transports.Car;
+
+public class DriverB extends Driver<Car> {
     public DriverB(String name, boolean license, int driverExperience) {
         super(name, license, driverExperience);
     }
