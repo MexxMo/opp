@@ -2,6 +2,12 @@ package coll.transports;
 
 import coll.CantLicenseException;
 import coll.drivers.Driver;
+import coll.Mechanic;
+
+
+import java.util.ArrayList;
+
+import java.util.List;
 
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -9,7 +15,20 @@ public abstract class Transport<T extends Driver> implements Competing {
     private String model;
     private double engineVolume;
     private T driver;
+    private List<Mechanic<?>> mechanics = new ArrayList<>();
 
+    public void addMechanic(Mechanic<?> mechanic){
+
+       mechanics.add(mechanic);
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public void showInfo() {
+         System.out.printf("Водитель: %s\nМеханики: %s\n", driver, getMechanics());
+    }
 
 
     public Transport(String brand, String model, double engineVolume, T driver) {
