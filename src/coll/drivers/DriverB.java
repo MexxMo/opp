@@ -13,7 +13,7 @@ public class DriverB extends Driver<Car> {
     }
 
     @Override
-    public void FinishMove() {
+    public void finishMove() {
         System.out.println("Водитель автомобиля " + getName() + " закончил движение");
 
     }

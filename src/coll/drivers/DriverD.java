@@ -13,7 +13,7 @@ public class DriverD extends Driver<Bus> {
     }
 
     @Override
-    public void FinishMove() {
+    public void finishMove() {
         System.out.println("Водитель автобуса " + getName() + " закончил движение");
 
     }

@@ -42,7 +42,7 @@ public abstract class Driver<T extends Transport<?>>  {
     }
 
     public abstract void startMove();
-    public abstract void FinishMove();
+    public abstract void finishMove();
     public abstract void refill();
 
     @Override

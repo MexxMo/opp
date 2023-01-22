@@ -13,7 +13,7 @@ public class DriverC extends Driver<Truck> {
     }
 
     @Override
-    public void FinishMove() {System.out.println("Водитель грузовика "+getName()+" закончил движение");
+    public void finishMove() {System.out.println("Водитель грузовика "+getName()+" закончил движение");
 
     }
 
