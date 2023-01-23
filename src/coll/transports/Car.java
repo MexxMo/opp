@@ -53,10 +53,10 @@ public class Car extends Transport<DriverB> {
     @Override
     public void passDiagnostics() throws CantLicenseException {
         if (!getDriver().isLicense()) {
-                throw new CantLicenseException("У водителя авто нет прав");
-            } else {
-        System.out.printf("Проверка авто %s %s - успешна\n", getBrand(),getModel());
-    }
+            throw new CantLicenseException("У водителя авто нет прав");
+        } else {
+            System.out.printf("Проверка авто %s %s - успешна\n", getBrand(), getModel());
+        }
     }
 
     @Override

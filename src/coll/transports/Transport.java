@@ -4,10 +4,8 @@ import coll.CantLicenseException;
 import coll.drivers.Driver;
 import coll.Mechanic;
 
-
-import java.util.ArrayList;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -15,19 +13,19 @@ public abstract class Transport<T extends Driver> implements Competing {
     private String model;
     private double engineVolume;
     private T driver;
-    private List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
-    public void addMechanic(Mechanic<?> mechanic){
+    public void addMechanic(Mechanic mechanic) {
 
-       mechanics.add(mechanic);
+        mechanics.add(mechanic);
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
     public void showInfo() {
-         System.out.printf("Водитель: %s\nМеханики: %s\n", driver, getMechanics());
+        System.out.printf("Водитель: %s\nМеханики: %s\n", driver, getMechanics());
     }
 
 
@@ -40,7 +38,9 @@ public abstract class Transport<T extends Driver> implements Competing {
     }
 
     public abstract void startMoving();
+
     public abstract void printType();
+
     public abstract void stopMoving();
 
     public abstract void passDiagnostics() throws CantLicenseException;
@@ -57,8 +57,6 @@ public abstract class Transport<T extends Driver> implements Competing {
     public String getBrand() {
         return brand;
     }
-
-
 
 
     public void setBrand(String brand) {

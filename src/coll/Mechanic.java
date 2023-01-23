@@ -8,7 +8,6 @@ public class Mechanic<T extends Transport<?>> {
     private String company;
 
 
-
     public Mechanic(String fullname, String company) {
         if (fullname == null || fullname.isEmpty() || fullname.isBlank()) {
             this.fullname = "default mechanic";
