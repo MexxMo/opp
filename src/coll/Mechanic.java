@@ -2,6 +2,8 @@ package coll;
 
 import coll.transports.Transport;
 
+import java.util.Objects;
+
 public class Mechanic<T extends Transport<?>> {
 
     private final String fullname;
@@ -51,5 +53,18 @@ public class Mechanic<T extends Transport<?>> {
     public String toString() {
         return "Механик " + fullname +
                 " из компании " + company;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(fullname, mechanic.fullname) && Objects.equals(company, mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullname, company);
     }
 }

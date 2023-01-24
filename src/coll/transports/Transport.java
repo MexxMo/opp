@@ -5,17 +5,18 @@ import coll.drivers.Driver;
 import coll.Mechanic;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
-public abstract class Transport<T extends Driver> implements Competing {
+public abstract class Transport<T extends Driver<?>> implements Competing {
     private String brand;
     private String model;
     private double engineVolume;
     private T driver;
     private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
-    public void addMechanic(Mechanic mechanic) {
+    public void addMechanic(Mechanic<?> mechanic) {
 
         mechanics.add(mechanic);
     }
@@ -97,6 +98,19 @@ public abstract class Transport<T extends Driver> implements Competing {
         return brand + " " +
                 model + " Объем двигателя " +
                 engineVolume;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(driver, transport.driver) && Objects.equals(mechanics, transport.mechanics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume, driver, mechanics);
     }
 }
 

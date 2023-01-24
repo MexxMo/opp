@@ -8,12 +8,12 @@ import java.util.*;
 
 public class Main {
 
-    public static List<Driver<?>> drivers = new ArrayList<>();
+    public static Set<Driver<?>> drivers = new HashSet<>();
     public static List<Transport<?>> transports = new ArrayList<>();
     public static Map<Transport<?>, Set<Mechanic<?>>> mechanics = new HashMap<>();
 
     public static void addMechanics(Transport<?> transport, Mechanic<?>... mechanics){
-        HashSet<Mechanic<?>> mechanic = new HashSet<>(List.of(mechanics));
+        Set<Mechanic<?>> mechanic = new HashSet<>(List.of(mechanics));
         Main.mechanics.put(transport, mechanic);
     }
 
